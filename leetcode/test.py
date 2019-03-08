@@ -9,5 +9,5 @@ if __name__ == '__main__':
     # obj.printList(obj.lengthOfLongestSubstring('abcabcbb'))
     obj = Sort()
     nums = [1, 4, 5, 7, 6, 9, 9, 11, 8, 0, -2]
-    obj.QuickSort(nums)
+    obj.HeapSort(nums)
     print(nums)
