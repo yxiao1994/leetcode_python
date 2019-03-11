@@ -159,10 +159,10 @@ class Solution(object):
             l.append(root.val)
             self.inorderhelp(root.right, l)
 
-        def TreeDepth(self, root):
+    def TreeDepth(self, root):
 
-            if not root:
-                return 0
+        if not root:
+            return 0
 
         return max(self.TreeDepth(root.left), self.TreeDepth(root.right)) + 1
 
@@ -225,4 +225,30 @@ class Solution(object):
                     queue.append(node.right)
             res.append(level_value)
         return res
+
+    def combinationSum(self, candidates, target):
+        """
+        :type candidates: List[int]
+        :type target: int
+        :rtype: List[List[int]]
+        """
+        res = []
+        if not candidates:
+            return res
+        curr = []
+        self.combinationSumHelper(candidates, target, 0, res, curr)
+        return res
+
+    def combinationSumHelper(self, candidates, target, start, res, curr):
+        if target < 0:
+            return
+        elif target == 0:
+            res.append(list(curr))
+            return
+        else:
+            for i in range(start, len(candidates)):
+                curr.append(candidates[i])
+                self.combinationSumHelper(candidates, target - candidates[i], i, res, curr)
+                curr.pop()
+
 
